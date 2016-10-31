@@ -1,0 +1,7 @@
+#!/bin/sh
+
+base_dir=$(dirname "$0")
+lib_dir="$base_dir/lib"
+
+
+exec swipl -t 'halt(1)' -g 'robo:main' -p library="$lib_dir" -f "$base_dir/main.pl" -- $@
