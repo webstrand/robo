@@ -56,6 +56,7 @@ sys_prim(Command, _, _) :-
 	robo:flag(dryrun, 1), !, writef("%d\n", [Command]).
 
 sys_prim(Command, Status, Options) :-
+    writef("%d\n", [Command]),
 	fork(PID),
 	(
 		PID = child *->
@@ -99,6 +100,7 @@ shell_prim(Script, Status) :-
 shell_prim(Script, _, _) :-
 	robo:flag(dryrun, 1), !, writef("%d\n", [Script]).
 shell_prim(Script, Status, Options) :-
+    writef("%d\n", [Script]),
 	getenv('SHELL', Shell),
 	compound_name_arguments(Command, Shell, [ "-c", Script ]),
 	sys_prim(Command, Status, Options).
