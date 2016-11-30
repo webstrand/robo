@@ -1,6 +1,6 @@
 #!/bin/sh
 
-base_dir=$(dirname "$0")
+base_dir=$(dirname $(readlink -f "$0"))
 lib_dir="$base_dir/lib"
 
 
