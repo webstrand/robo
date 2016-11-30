@@ -9,6 +9,9 @@
 :- discontiguous depend/2.
 :- discontiguous private/1.
 
+:- discontiguous solved/1.
+:- dynamic solved/1.
+
 %:- initialization robo:main.
 
 
