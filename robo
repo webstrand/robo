@@ -1,7 +1,3 @@
 #!/bin/sh
-
 base_dir=$(dirname $(readlink -f "$0"))
-lib_dir="$base_dir/lib"
-
-
-exec swipl -t 'halt(1)' -g 'robo:main' -p library="$lib_dir" -f "$base_dir/main.pl" -- $@
+exec swipl -t 'halt(1)' -g 'robo:main' -p library="$base_dir/lib" -f "$base_dir/load.pl" -- $@

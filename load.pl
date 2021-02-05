@@ -1,6 +1,5 @@
 :- use_module(library(robo)).
 :- use_module(library(robo_shell)).
-:- use_module(library(robo_stringify)).
 
 :- op(1, fx, '--').
 
