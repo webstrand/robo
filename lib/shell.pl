@@ -42,8 +42,6 @@ system(Command, Status, Options) :-
 
 system(Command, Status, Options) :-
 	compound(Command),
-	format("~q\n", [Command]),
-	\+ robo:flag(dryrun, 1),
 	fork(PID),
 	(
 		PID = child *->
@@ -53,7 +51,7 @@ system(Command, Status, Options) :-
 		child_wait(PID, Status, Options)
 	).
 
-system_ok(Command) :- system_err(Command, []).
+system_ok(Command) :- system_ok(Command, []).
 system_ok(Command, Options) :-
 	system(Command, exited(0), Options).
 

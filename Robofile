@@ -1,0 +1,27 @@
+:- use_module(robo(shell)).
+
+% Cancel every mtime:Path dependency so long as it exists.
+cancel(mtime:Path) :- exists_file(Path).
+
+% Cancel every file:Path dependency so long as each of its mtime:Path
+% dependencies are older.
+cancel(file:Path) :-
+	exists_file(Path),
+	time_file(Path, ChildTime),
+	forall(depend(file:Path, mtime:Dep), (
+		exists_file(Dep),
+		time_file(Dep, ParentTime),
+		ChildTime >= ParentTime
+	)).
+
+
+depend(file:'robo', mtime:'lib/shell.pl').
+depend(file:'robo', mtime:'lib/solver.pl').
+depend(file:'robo', mtime:'robo.pl').
+recipe(file:'robo') :-
+	format('Running file:robo\n'),
+	system(swipl('-o', 'robo', '-c', 'robo.pl')).
+
+
+depend(build, file:'robo').
+recipe(build).
