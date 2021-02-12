@@ -3,6 +3,15 @@ This is very alpha software. I'll probably change how the entire thing works, no
 
 Robo is automation software akin to `make`. Users define targets, dependencies, and recipes using special Prolog predicates defined in a `Robofile`. Then at runtime, when the user runs `robo`, the targets matching the requested goals are executed.
 
+## Building
+Robo is based on SWI-Prolog and expects `swipl` to be available on the system.
+
+You can use `robo.pl` directly, or build a pseudo-binary via:
+
+```shell-session
+$ ./robo build
+```
+
 
 ## Robofile Predicates
 ### `recipe/1`
