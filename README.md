@@ -1,7 +1,7 @@
 # Robo
 This is very alpha software. I'll probably change how the entire thing works, not to far in the future.
 
-Robo is automation software akin to `make`. Users define targets, dependencies, and recipes using special Prolog predicates defined in a `Robofile`. Then at runtime, when the user runs `robo`, the targets matching the requested goals are executed.
+_Robo_ is an automation tool akin to _make_. Unlike _make_, it does not use filesystem paths and modification time to determine which targets need to be rebuilt. Instead users are allowed to leverage the full power of Prolog to define recipes and their dependencies as well as the conditions under which a target needs to be rebuilt.
 
 ## Building
 Robo is based on SWI-Prolog and expects `swipl` to be available on the system.
